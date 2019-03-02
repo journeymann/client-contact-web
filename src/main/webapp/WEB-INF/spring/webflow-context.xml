@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/webflow-config
+                           http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+    <!-- Enables FlowHandlers -->
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter"
+          p:flowExecutor-ref="flowExecutor" />
+
+    <!-- Executes flows: the entry point into the Spring Web Flow system -->
+    <webflow:flow-executor id="flowExecutor" />
+
+    <!--	
+        <webflow:flow-execution-listeners>
+            <webflow:listener ref="securityFlowExecutionListener" />
+        </webflow:flow-execution-listeners>
+    </webflow:flow-executor>
+    -->
+
+    <!-- The registry of executable flow definitions -->
+    <webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
+        <webflow:flow-location path="/WEB-INF/views/jsp/person/person.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/address/address.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/address/brokeraddress.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/address/dealeraddress.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/user/user.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/policy/policy.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/broker/broker.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/dealer/dealer.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/compliance/compliance.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/contact/contact.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/misc/field.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/misc/query.xml" />
+        <webflow:flow-location path="/WEB-INF/views/jsp/misc/view_contact.xml" />
+    </webflow:flow-registry>
+
+    <!-- Plugs in a custom creator for Web Flow views -->
+    <webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" />
+
+    <!-- Configures Web Flow to use Tiles to create views for rendering; Tiles allows for applying consistent layouts to your views -->
+    <bean id="mvcViewFactoryCreator"
+          class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator"
+          p:viewResolvers-ref="tilesViewResolver" />
+
+    <!-- Installs a listener to apply Spring Security authorities -->
+    <!--
+    <bean id="securityFlowExecutionListener"
+          class="org.springframework.webflow.security.SecurityFlowExecutionListener" />
+    -->	
+
+    <!-- Used in 'create' action-state of Person Flow -->
+    <bean id="personBean" 
+          class="com.hlpp.clientcontact.domain.Person"
+          scope="prototype" />
+
+    <!-- Used in 'create' action-state of Address Flow -->
+    <bean id="addressBean" 
+          class="com.hlpp.clientcontact.domain.Address"
+          scope="prototype" />
+
+    <!-- Used in 'create' action-state of Address Flow -->
+    <bean id="brokerAddressBean" 
+          class="com.hlpp.clientcontact.domain.BrokerAddress"
+          scope="prototype" />
+          
+    <!-- Used in 'create' action-state of Address Flow -->
+    <bean id="dealerAddressBean" 
+          class="com.hlpp.clientcontact.domain.BrokerDealerAddress"
+          scope="prototype" />          
+          
+    <!-- Used in 'create' action-state of User/Admin Flow -->
+    <bean id="userBean" 
+          class="com.hlpp.clientcontact.domain.User"
+          scope="prototype" />
+
+    <!-- Used in 'create' action-state of Policy Flow -->
+    <bean id="policyBean" 
+          class="com.hlpp.clientcontact.domain.Policy"
+          scope="prototype" />
+
+    <!-- Used in 'create' action-state of Broker Flow -->
+    <bean id="brokerBean" 
+          class="com.hlpp.clientcontact.domain.Broker"
+          scope="prototype" />
+
+    <!-- Used in 'create' action-state of Broker Dealer Flow -->
+    <bean id="dealerBean" 
+          class="com.hlpp.clientcontact.domain.BrokerDealer"
+          scope="prototype" />
+
+    <!-- Used in 'create' action-state of Contact Flow -->
+    <bean id="contactBean" 
+          class="com.hlpp.clientcontact.domain.ContactCase"
+          scope="prototype" />
+
+    <!-- Used in 'create' action-state of Contact Flow -->
+    <bean id="contactTypeBean" 
+          class="com.hlpp.clientcontact.domain.ContactType"
+          scope="prototype" />
+
+    <!-- Used in Field definition -->
+    <bean id="fieldBean" 
+          class="com.hlpp.clientcontact.domain.Field"
+          scope="prototype" />
+
+    <!-- Used in Filter definition -->
+    <bean id="filterBean" 
+          class="com.hlpp.clientcontact.domain.Filter"
+          scope="prototype" />
+
+    <!-- Used in Attributes definition -->
+    <bean id="attributeBean" 
+          class="com.hlpp.clientcontact.domain.Attribute"
+          scope="prototype" />
+
+    <!-- Used in Query definition -->
+    <bean id="queryBean" 
+          class="com.hlpp.clientcontact.dao.util.QueryHelper"
+          scope="prototype" />
+
+    <!-- Used in Maintenance definition -->
+    <bean id="maintBean" 
+          class="com.hlpp.clientcontact.dao.util.MaintenanceHelper"
+          scope="prototype" />
+
+</beans>

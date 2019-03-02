@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- URL to flow mapping rules -->
+    <bean id="flowMappings"
+          class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"
+          p:order="0">
+        <property name="mappings">
+            <props>
+                <prop key="/person.html">personFlowHandler</prop>
+                <prop key="/user.html">userFlowHandler</prop>
+                <prop key="/policy.html">policyFlowHandler</prop>
+                <prop key="/broker.html">brokerFlowHandler</prop>
+                <prop key="/dealer.html">brokerDealerFlowHandler</prop>
+                <prop key="/compliance.html">complianceFlowHandler</prop>
+                <prop key="/contact.html">contactFlowHandler</prop>
+                <prop key="/field.html">descFlowHandler</prop>
+                <prop key="/query.html">queryFlowHandler</prop>
+                <prop key="/maintenance.html">maintenanceFlowHandler</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="personFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.PersonFlowHandler"/>
+
+    <bean id="userFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.UserFlowHandler"/>
+
+    <bean id="policyFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.PolicyFlowHandler"/>
+
+    <bean id="brokerFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.BrokerFlowHandler"/>
+
+    <bean id="brokerDealerFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.BrokerDealerFlowHandler"/>
+
+    <bean id="complianceFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.ComplianceFlowHandler"/>
+
+    <bean id="contactFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.ContactFlowHandler"/>
+
+    <bean id="descFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.DescFlowHandler"/>
+
+    <bean id="queryFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.QueryFlowHandler"/>
+
+    <bean id="maintenanceFlowHandler"
+          class="com.hlpp.clientcontact.web.webflow.MaintenanceFlowHandler"/>
+
+
+    <mvc:annotation-driven/>
+
+    <mvc:view-controller path="/index.html"/>
+    <mvc:view-controller path="/error.html"/>
+    <mvc:view-controller path="/login.html"/>
+    <mvc:view-controller path="/tools/denied.html"/>
+    <mvc:view-controller path="/policy/detail.html"/>
+    <mvc:view-controller path="/logoutSuccess.html"/>
+    <mvc:view-controller path="/info/legal.html"/>
+    <mvc:view-controller path="/info/privacy.html"/>
+    <mvc:view-controller path="/type/contacts.html"/>
+    <mvc:view-controller path="/type/contacts_select.html"/>
+    <mvc:view-controller path="/type/policy.html"/>
+    <mvc:view-controller path="/type/broker_company.html"/>
+    <mvc:view-controller path="/type/broker_dealer.html"/>
+    <mvc:view-controller path="/type/compliance.html"/>
+    <mvc:view-controller path="/type/query.html"/>
+    <mvc:view-controller path="/type/query_person.html"/>
+    <mvc:view-controller path="/type/redirect.html"/>
+    <mvc:view-controller path="/type/maintenance.html"/>
+    <mvc:view-controller path="/type/edit_table.html"/>
+    <mvc:view-controller path="/ajax/maint.html"/>
+    <mvc:view-controller path="/policy/desc.html"/>
+    <mvc:view-controller path="/compliance/desc.html"/>
+    <mvc:view-controller path="/policy/desc_all.html"/>
+    <mvc:view-controller path="/misc/desc.html"/>
+    <mvc:view-controller path="/json/query.html"/>
+    <mvc:view-controller path="/timedoutRedirect.html"/>
+    <mvc:view-controller path="/timedout.html"/>
+
+    <bean id="tilesConfigurer"
+          class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
+          p:definitions="/WEB-INF/tiles/templates.xml"/>
+
+    <bean id="tilesViewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+          p:viewClass="com.hlpp.clientcontact.web.tiles.DynamicTilesView"
+          p:prefix="/WEB-INF/views/jsp/"
+          p:suffix=".jsp"/>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+          p:basenames="messages"/>
+
+    <!-- Declare the Interceptor
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+              p:paramName="locale"/>
+    </mvc:interceptors>
+     -->
+
+    <!-- Declare the Resolver
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+     -->
+
+    <!--<bean id="userDetailsService" class="com.hlpp.clientcontact.service.UserService"/>-->
+
+    <!-- Added for JSON -->
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+        <property name="alwaysUseFullPath" value="true"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="alwaysUseFullPath" value="true"/>
+    </bean>
+
+    <!--<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+	<property name="prefix" value="/WEB-INF/views/" />
+	<property name="suffix" value=".jspx" />
+	<property name="order" value="2" />
+    </bean>-->
+
+    <bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView">
+        <property name="contentType" value="application/json"/>
+    </bean>
+
+
+    <bean class="org.springframework.web.servlet.view.XmlViewResolver"
+          p:order="0"
+          p:location="/WEB-INF/spring/views.xml"/>
+
+
+</beans>

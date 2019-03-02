@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER,ROLE_ADMIN" match="any"/>
+    
+    <input name="id" />
+    <input name="type" />
+    <input name="searchString" />    
+    
+    <decision-state id="createOrEdit">
+        <if test="id == null" then="create" else="edit" />
+    </decision-state>
+
+    <action-state id="edit">
+        <evaluate expression="policyDao.findMaintenanceHelper(searchString)" result="flowScope.maint" />
+        <transition to="tableForm" />
+    </action-state>
+    
+    <view-state id="tableForm" model="maint" view="/misc/table_form">
+        
+    </view-state>
+
+    <end-state id="tableConfirmed" />
+
+    <end-state id="cancel" />
+    
+</flow>

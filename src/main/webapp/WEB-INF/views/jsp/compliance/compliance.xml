@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER,ROLE_ADMIN" match="any"/>
+    
+    <input name="id" />
+    
+    <decision-state id="createOrEdit">
+        <if test="id == null" then="create" else="edit" />
+    </decision-state>
+
+    <action-state id="create">
+        <evaluate expression="policyBean" result="flowScope.policy" />
+        <transition to="policyForm" />
+    </action-state>
+
+    <action-state id="edit">
+        <evaluate expression="policyDao.findPolicyById(id)" result="flowScope.policy" />
+        <transition to="policyForm" />
+    </action-state>
+    
+    <action-state id="detail">
+        <evaluate expression="policyDao.findPolicyById(id)" result="flowScope.policy" />
+        <transition to="m_policyForm" />
+    </action-state>
+
+    <view-state id="m_policyForm" model="policy" view="/compliance/detail">
+        
+    </view-state>
+    
+    <view-state id="policyForm" model="policy" view="/compliance/form">
+        
+        <transition on="save" to="homePolicy">
+            <evaluate expression="policyDao.save(policy)" result="flowScope.policy" />
+            
+            <set name="flowScope.id" value="policy.caseid" />
+            
+            <set name="flashScope.statusMessageKey" value="'policy.form.msg.success'" />
+            
+            <render fragments="content" />
+        </transition>
+        <transition on="cancel" to="cancel" bind="false">
+            <evaluate expression="policyDao.findPolicys()" result="flowScope.policys" />
+        </transition>
+        
+    </view-state>
+
+    <end-state id="cancel" view="externalRedirect:contextRelative:/type/compliance.html"/>
+    <end-state id="homePolicy" view="externalRedirect:contextRelative:/type/compliance.html"/>        
+</flow>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER,ROLE_ADMIN" match="any"/>
+    
+    <input name="id" />
+    <input name="username" />
+   
+    <decision-state id="createOrEdit">
+        <if test="id == null" then="create" else="edit" />
+    </decision-state>
+
+    <action-state id="create">
+        <evaluate expression="userBean" result="flowScope.user" />
+        <transition to="userForm" />
+    </action-state>
+
+    <action-state id="edit">
+        <!--<evaluate expression="userDao.findUserById(id)" result="flowScope.user" />-->
+        <evaluate expression="userDao.getUser(username)" result="flowScope.user" />
+        <transition to="userForm" />
+    </action-state>
+
+    <view-state id="userForm" model="user" view="/user/form">
+       
+        <transition on="save" to="userForm">
+            <evaluate expression="userDao.save(user)" result="flowScope.user" />
+            
+            <set name="flowScope.id" value="user.id" />
+            
+            <set name="flashScope.statusMessageKey" value="'user.form.msg.success'" />
+            
+            <render fragments="content" />
+        </transition>
+        <transition on="cancel" to="cancel" bind="false">
+            <evaluate expression="userDao.findUsers()" result="flowScope.users" />
+        </transition>
+    </view-state>
+   
+    <end-state id="userConfirmed" />
+
+    <end-state id="cancel" />
+    
+</flow>

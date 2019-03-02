@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER,ROLE_ADMIN" match="any"/>
+    
+    <input name="id" />
+    <input name="type" />
+    <input name="p_id" />
+    <input name="flow_id" />    
+    
+    <decision-state id="createOrEdit">
+        <if test="id == null" then="create" else="edit" />
+    </decision-state>
+
+    <action-state id="create">
+        <evaluate expression="policyDao.findNewContactCase(p_id, flow_id)" result="flowScope.contact" />
+        <transition to="contactForm" />
+    </action-state>
+
+    <action-state id="edit">
+        <evaluate expression="policyDao.findContactCaseById(id)" result="flowScope.contact" />
+        <transition to="contactForm" />
+    </action-state>
+    
+    <view-state id="contactForm" model="contact" view="/contact/form">
+        
+        <transition on="save" to="previous">
+            <evaluate expression="policyDao.save(contact)" result="flowScope.contact" />
+            <set name="flowScope.id" value="contact.id" />
+            <set name="flashScope.statusMessageKey" value="'contact.form.msg.success'" />
+            <render fragments="content" />
+        </transition>
+
+        <transition on="cancel" to="previous" bind="false">
+            <evaluate expression="policyDao.findPolicyById(contact.caseid)" result="flowScope.policy" />
+        </transition>
+    </view-state>
+
+    <end-state id="contactConfirmed" />
+
+    <end-state id="previous" view="externalRedirect:contextRelative:/type/redirect.html" />
+    
+    <decision-state id="cancel">
+        <if test="type == 'C'" then="cancelCompliance" />
+        <if test="type == 'B'" then="cancelBroker" />
+        <if test="type == 'D'" then="cancelDealer" />
+        <if test="type == 'P'" then="cancelPolicy" />        
+    </decision-state>
+
+    <end-state id="cancelCompliance" view="externalRedirect:contextRelative:/type/compliance.html"/>
+    <end-state id="cancelBroker" view="externalRedirect:contextRelative:/type/broker_company.html"/>
+    <end-state id="cancelDealer" view="externalRedirect:contextRelative:/type/broker_dealer.html"/>
+    <end-state id="cancelPolicy" view="externalRedirect:contextRelative:/type/policy.html"/>
+
+    
+</flow>

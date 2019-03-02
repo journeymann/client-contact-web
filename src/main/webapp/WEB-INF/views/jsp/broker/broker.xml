@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER,ROLE_ADMIN" match="any"/>
+    
+    <input name="id" />
+    
+    <decision-state id="createOrEdit">
+        <if test="id == null" then="create" else="edit" />
+    </decision-state>
+
+    <action-state id="create">
+        <evaluate expression="brokerBean" result="flowScope.broker" />
+        <transition to="brokerForm" />
+    </action-state>
+
+    <action-state id="edit">
+        <evaluate expression="policyDao.findBrokerById(id)" result="flowScope.broker" />
+        <transition to="brokerForm" />
+    </action-state>
+    
+    <view-state id="brokerForm" model="broker" view="/broker/form">
+        <transition on="addAddress" to="brokeraddress" bind="false">
+            <set name="flashScope.addressId" value="''" />
+        </transition>
+        <transition on="editAddress" to="brokeraddress">
+            <set name="flashScope.addressId" value="requestParameters.addressId" />
+        </transition>
+        <transition on="deleteAddress" to="brokerForm">
+            <evaluate expression="policyDao.deleteBrokerAddress(id, requestParameters.addressId)" result="flowScope.broker" />
+        </transition>
+        
+        <transition on="save" to="brokerForm">
+            <evaluate expression="policyDao.save(broker)" result="flowScope.broker" />
+            
+            <set name="flowScope.id" value="broker.brokerid" />
+            
+            <set name="flashScope.statusMessageKey" value="'broker.form.msg.success'" />
+            
+            <render fragments="content" />
+        </transition>
+        <transition on="cancel" to="cancel" bind="false">
+            <evaluate expression="policyDao.findBrokers()" result="flowScope.brokers" />
+        </transition>
+    </view-state>
+
+    <subflow-state id="brokeraddress" subflow="brokeraddress"> 
+        <input name="id" value="addressId"/>
+        <input name="broker" value="broker"/>
+        
+        <output name="address" />
+        
+        <transition on="saveAddress" to="brokerForm">
+            <evaluate expression="policyDao.saveBrokerAddress(id, address)" result="flowScope.broker" />
+            <set name="flashScope.statusMessageKey" value="'address.form.msg.success'" />
+        </transition>
+        <transition on="cancelAddress" to="brokerForm" >
+        	<evaluate expression="policyDao.findBrokerById(broker.brokerid)" result="flowScope.broker" />
+        </transition>                
+    </subflow-state>
+    
+    <end-state id="brokerConfirmed" />
+
+    <end-state id="cancel" view="externalRedirect:contextRelative:/type/broker_company.html"/>
+    
+</flow>

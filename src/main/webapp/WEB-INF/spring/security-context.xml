@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/security
+                           http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+
+    <security:global-method-security secured-annotations="enabled"/>
+
+    <security:http auto-config="true" access-denied-page="/denied.jsp" use-expressions="true">
+
+        <security:remember-me user-service-ref="userDetailsService"/>
+
+        <!-- Restrict URLs based on role -->
+        <security:intercept-url pattern="/login*"
+                                access="hasRole('ROLE_ANONYMOUS')"/>
+
+        <security:intercept-url pattern="/admin.jsp"
+                                access="hasRole('ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/tools/denied.html"
+
+                                access="hasRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/logoutSuccess*"
+                                access="hasRole('ROLE_ANONYMOUS')"/>
+
+        <security:intercept-url pattern="/search*"
+                                access="hasAnyRole('ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/views/**"
+                                access="hasAnyRole('ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/css/**"
+                                access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/js/**"
+                                access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+        <!--<security:intercept-url pattern="/js/jquery/themes/base/**" access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_WRITE','ROLE_ADMIN')" />-->
+
+        <security:intercept-url pattern="/docs/**"
+                                access="hasAnyRole('ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/images/**"
+                                access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/resources/**"
+                                access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/ajax/**"
+                                access="hasAnyRole('ROLE_ANONYMOUS','ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <security:intercept-url pattern="/**"
+                                access="hasAnyRole('ROLE_USER','ROLE_WRITE','ROLE_ADMIN')"/>
+
+        <!-- Override default login and logout pages -->
+        <security:form-login login-page="/login.html"
+                             login-processing-url="/loginProcess"
+                             default-target-url="/index.jsp"
+                             authentication-failure-url="/login.html?login_error=1"/>
+
+        <security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/logoutSuccess.html"/>
+
+    </security:http>
+
+    <bean id="userDetailsService" class="com.hlpp.clientcontact.service.UserService"/>
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="userDetailsService">
+            <security:password-encoder hash="plaintext"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>
+

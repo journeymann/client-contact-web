@@ -1,0 +1,797 @@
+/* --------------------- html tags ------------------*/
+
+BODY {
+
+	PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 0px; 
+	MARGIN: 0px; 
+	PADDING-TOP: 0px; 
+	BACKGROUND-COLOR: #ccc; 
+	TEXT-ALIGN: center;
+	font-family:Georgia,Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;	
+}
+
+H1 {
+	PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 0px; 
+	MARGIN: 0px 0px 0px 10px; 
+	COLOR: #000000; 
+	PADDING-TOP: 20px;
+	font-family:Times New Roman,Arial, Helvetica, sans-serif;
+	font-size:24px;
+}
+
+H2 {
+	PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 10px; 
+	MARGIN: 0px 0px 0px 10px; 
+	COLOR: #903; 
+	PADDING-TOP: 0px;
+	font-size:18px;
+}
+
+H3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; 
+	MARGIN: 0px; COLOR: #666; PADDING-TOP: 0px
+}
+
+H5 {
+	MARGIN: 0px 0px 0px -5px; BORDER-BOTTOM: #9d0020 1px solid
+}
+
+H6 {
+	MARGIN: 0px 0px 0px -5px; BORDER-BOTTOM: #9d0020 1px solid
+}
+
+P {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; PADDING-BOTTOM: 0px; 
+	MARGIN: 7px 0px 10px; COLOR: #666; PADDING-TOP: 0px;
+	font-size:12px
+}
+
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+
+LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #666; PADDING-TOP: 0px
+}
+
+A {
+	COLOR: #666; TEXT-DECORATION: underline
+}
+
+A:hover {
+	COLOR: #000; TEXT-DECORATION: underline
+}
+
+A IMG {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; 
+	PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+
+FIELDSET {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; 
+	PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; 
+	PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+
+LEGEND {
+	DISPLAY: none
+}
+
+INPUT {
+	#COLOR: #903;
+	COLOR: #000;
+}
+
+SELECT {
+	COLOR: green;
+	size: 135px;
+}
+
+OPTION {
+	#COLOR: #903;
+	COLOR: #000;
+}
+
+OPTION.selected {
+	COLOR: #666
+}
+
+TABLE {
+	BORDER-RIGHT: 1px solid; 
+	BORDER-LEFT: 1px solid;
+	BORDER-TOP: 1px solid; 
+	BORDER-BOTTOM: 1px solid;
+	PADDING-RIGHT: 0px; 	
+	PADDING-LEFT: 0px; 
+	PADDING-TOP: 10px;
+	PADDING-BOTTOM: 0px; 
+	MARGIN: 0px; 	 
+	COLOR: #666; 
+	LINE-HEIGHT: 13px;		 
+	BORDER-COLLAPSE: collapse
+	font-size:12px;
+}
+
+
+TD {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; 
+	PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; 
+	BORDER-LEFT: 0px; COLOR: #666; LINE-HEIGHT: 13px; PADDING-TOP: 0px; 
+	BORDER-BOTTOM: 0px; BORDER-COLLAPSE: collapse;font-size:12px;
+}
+
+TH {
+	COLOR: #fff; LINE-HEIGHT: 13px; BACKGROUND-COLOR: #999;	font-size:12px;
+}
+
+.alternate TD {
+	COLOR: #666; BACKGROUND-COLOR: #ebebeb
+}
+
+.alternate TR {
+	COLOR: #666; BACKGROUND-COLOR: #ebebeb
+}
+
+.bottom TR {
+	BORDER-BOTTOM: 1px;
+}
+
+.bottom tr {
+	BORDER-BOTTOM: 1px;
+}
+
+
+TR .first {
+	PADDING-LEFT: 5px
+}
+
+TBODY {
+	MARGIN: 0px -3px
+}
+
+#formText {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 1px; FONT-SIZE: 12px; 
+	PADDING-BOTTOM: 0px; VERTICAL-ALIGN: top; WIDTH: 100px; 
+	PADDING-TOP:    0px; HEIGHT: 14px
+}
+
+/*-------------------------------------- end html tags --------------------------------*/
+
+
+/* ------------- [contentContainer] The parent of all containers ------- */
+#contentContainer {
+
+	BORDER-RIGHT: #999 1px solid; 
+	BACKGROUND-POSITION: left top;
+	BORDER-TOP: #999 1px solid; 
+	MARGIN: 20px auto; 
+	BORDER-LEFT: #999 1px solid;
+	WIDTH: 780px; 
+	BORDER-BOTTOM: #999 1px solid; 
+	BACKGROUND-REPEAT: repeat-y; 
+	BACKGROUND-COLOR: #ccc; 
+	TEXT-ALIGN: left
+}
+
+/* ------------- [mastheadContainer] Container for header image. ---- */
+#mastheadContainer {
+	HEIGHT: 100px;
+	BACKGROUND-COLOR: white;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+/* ------------ [primaryNavigation] styles for navigation menu withing mastheadContainer. ------------ */
+#primaryNavigation {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; 
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px; COLOR: #fff; 	     	    
+	PADDING-TOP: 0px; HEIGHT: 20px; 
+	BACKGROUND-COLOR: #903
+}
+
+#primaryNavigation UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; 
+	PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fff 1px solid; 
+	COLOR: #fff; PADDING-TOP: 0px
+}
+
+HTML #primaryNavigation UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+
+#primaryNavigation UL.first {
+	WIDTH: 570px; 
+	BORDER-TOP-STYLE: none; 
+	BORDER-RIGHT-STYLE: none; 
+	BORDER-LEFT-STYLE: none; 
+	BORDER-BOTTOM-STYLE: none
+}
+
+#primaryNavigation A {
+	FONT-SIZE: 10px; MARGIN: 2px 7px; COLOR: #fff
+}
+
+/*    --------[bodyContainer] container for body content (content below headers) -------- */
+#bodyContainer {
+	CLEAR: both;
+	BORDER-TOP: #999 1px solid;
+	margin-top: 0px;
+	height: 600px;
+}
+
+#bodyContainerLong {
+	CLEAR: both;
+	BORDER-TOP: #999 1px solid;
+	margin-top: 0px;
+	height: 800px;
+}
+
+
+
+/*MAIN BODY */
+#mainBodyArea {
+	FLOAT: left; MARGIN: 0px; BORDER-LEFT: #999 1px solid; 
+	WIDTH: 569px; height: 600px; BACKGROUND-COLOR: yellow; 
+	voice-family: inherit
+}
+
+#mainBodyAreaExtended {
+	FLOAT: left; MARGIN: 0px; BORDER-LEFT: #999 1px solid; 
+	WIDTH: 569px; height: 800px; BACKGROUND-COLOR: yellow; 
+	voice-family: inherit
+}
+
+.portalPage #leftNavigationContainer {
+	BORDER-RIGHT: #999 1px solid; BACKGROUND-COLOR: #fff
+}
+
+#leftNavigationContainer {
+	BORDER-RIGHT: #999 1px solid; FLOAT: left; 
+	WIDTH: 190px; 
+	MARGIN-RIGHT: -1px; 
+	BACKGROUND-COLOR: #ccc
+}
+
+#leftNavigationContainer  {
+	LINE-HEIGHT: 12px;
+}
+
+#leftNavigationContainer A {
+	PADDING-RIGHT: 3px; DISPLAY: 
+	block; PADDING-LEFT: 10px; FONT-SIZE: 10px; 
+	PADDING-BOTTOM: 0px; MARGIN: 0px; 
+	COLOR: #666; PADDING-TOP: 0px
+}
+
+HTML #leftNavigationContainer A {
+	DISPLAY: inline-block
+}
+
+#leftNavigationContainer UL {
+	PADDING-RIGHT: 0px; LIST-STYLE: none none outside; PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px;
+}
+
+#leftNavigationContainer LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: none; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+
+#leftNavigationContainer LI A {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 20px; 
+	PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+
+#leftNavigationContainer LI A:hover {
+	color: #903;
+}
+
+#leftNavigationContainer UL A {
+	PADDING-LEFT: 20px
+}
+
+#leftNavigationContainer UL UL A {
+	PADDING-LEFT: 30px
+}
+
+#leftNavigationContainer LI.selected {
+	BORDER-TOP: #fff 1px solid; 
+	BORDER-BOTTOM: #999 1px solid; 
+	BACKGROUND-COLOR: #fff
+}
+
+.portalPage #quadrantA {
+	FLOAT: left;
+	WIDTH: 568px;
+	HEIGHT: 600px;
+	BACKGROUND-COLOR: #fff;
+	display: table;
+	border-left: 0;
+	padding-right: 0px;
+}
+
+.portalPage #quadrantB {
+	BORDER-RIGHT: #999 1px solid;
+	FLOAT: left;
+	WIDTH: 379px;
+	HEIGHT: 600px;
+	BACKGROUND-COLOR: #fff;
+	display: table;
+}
+
+.portalPage #quadrantA FORM {
+	padding-top: 25 px;
+	padding-left: 15px;
+	padding-bottom: 5px;
+}
+
+.portalPage #quadrantC {
+	FLOAT: left;
+	WIDTH: 189px;
+	height: 600px;
+	background-color: #fff;
+}
+
+.portalPage #quadrantD {
+	FLOAT: left; 
+	BORDER-LEFT: #fff 0px; 
+	WIDTH: 568px;
+	HEIGHT: 100px;
+	voice-family: inherit;
+	BACKGROUND-COLOR: #fff;	
+}
+
+.portalPage #quadrantE {
+	BORDER-TOP: #999 1px solid;
+	FLOAT: left; 
+	height: 500px; 
+	WIDTH: 568px; 
+	voice-family: inherit;
+	BACKGROUND-COLOR: #fff;
+}
+
+.portalPage #quadrantFULL {
+	FLOAT: left; 
+	BORDER-LEFT: #fff 0px; 
+	WIDTH: 780px;
+	HEIGHT: 610px;
+	voice-family: inherit;
+	BACKGROUND-COLOR: #fff;	
+	font-size:12px;
+}
+
+.portalPage #quadrantNONE {
+	FLOAT: left; 
+	BORDER-LEFT: #fff 0px; 
+	WIDTH: 860px;
+	voice-family: inherit;
+	BACKGROUND-COLOR: #fff;	
+}
+
+
+#footerContainer {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 10px; 
+	PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #fff; 
+	PADDING-TOP: 3px; HEIGHT: 17px; 
+	BACKGROUND-COLOR: #666; TEXT-ALIGN: left
+}
+
+#footerContainer A {
+	FONT-SIZE: 10px; COLOR: #fff
+}
+
+#footerContainer A:hover {
+	COLOR: #000
+}
+
+.navigation#footerContainer UL {
+	DISPLAY: inline; FLOAT: none; COLOR: #fff; voice-family: inherit
+}
+
+.navigation#footerContainer UL LI:unknown {
+	COLOR: #fff
+}
+
+HTML .navigation#footerContainer UL LI {
+	BORDER-RIGHT-COLOR: #fff
+}
+
+#copyrightContainer {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 0px; FONT-SIZE: 10px; 
+	FLOAT: right; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+
+#footerSharedContainer {
+	CLEAR: both; PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 0px; MARGIN: 0px;
+	PADDING-TOP: 0px; BORDER-BOTTOM: #fff 1px solid; 
+	WIDTH: 760px; HEIGHT: 20px; BACKGROUND-COLOR: #ccc; 
+	TEXT-ALIGN: left; FONT-SIZE: 11px; LINE-HEIGHT: 14px; 
+	FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+
+#footerShared {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; 
+	MARGIN: 0px; WIDTH: 760px; COLOR: #666; PADDING-TOP: 0px; 
+	HEIGHT: 20px; BACKGROUND-COLOR: #CCCCCC
+}
+
+#footerShared UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 13px; FLOAT: left; 
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 1px; COLOR: #fff; 
+	PADDING-TOP: 3px; HEIGHT: 17px; BACKGROUND-COLOR: #ccc; voice-family: inherit
+}
+
+UNKNOWN {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 9px; PADDING-BOTTOM: 0px; PADDING-TOP: 2px; HEIGHT: 18px
+}
+
+#footerShared UL.first {
+	MARGIN: 0px; WIDTH: 87px; voice-family: inherit
+}
+
+UNKNOWN {
+	WIDTH: 91px
+}
+
+#footerShared UL.second {
+	voice-family: inherit
+}
+
+UNKNOWN {
+	WIDTH: 366px
+}
+
+#footerShared UL.third {
+	WIDTH: 50px; voice-family: inherit
+}
+
+UNKNOWN {
+	WIDTH: 274px
+}
+
+.navigation#footerShared UL LI {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px
+}
+
+.navigation#footerShared UL LI:unknown {
+	COLOR: #666
+}
+
+HTML .navigation#footerShared UL LI {
+	BORDER-RIGHT-COLOR: #999
+}
+
+#footerShared A {
+	FONT-SIZE: 10px; COLOR: #666
+}
+
+#footerShared A:hover {
+	COLOR: #000;
+	width: 333px;
+}
+
+#logoLink {
+	PADDING-RIGHT: 0px;
+	DISPLAY: block;
+	PADDING-LEFT: 0px;
+	PADDING-BOTTOM: 0px;
+	WIDTH: 100px;
+	PADDING-TOP: 0px;
+	background-repeat: repeat;
+}
+
+#headerImage {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 1px; PADDING-BOTTOM: 0px;
+	MARGIN: -76px 0px 0px 190px; OVERFLOW: hidden; WIDTH: 569px;
+	PADDING-TOP: 3px; HEIGHT: 70px; voice-family: inherit
+}
+
+.navigation {
+	MARGIN-LEFT: 0px
+}
+
+.navigation  {
+	LINE-HEIGHT: 14px
+}
+
+.navigation UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 100px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+
+.navigation UL LI {
+	PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+
+.portalPage {
+	BACKGROUND-POSITION: left top; FLOAT: left; 
+	BACKGROUND-IMAGE: url(/sites/hig/images/investor/portal_background.png);
+	BACKGROUND-REPEAT: repeat-y
+}
+
+.portalPage #leftNavigationContainer {
+	BORDER-RIGHT: #999 1px solid;
+	BACKGROUND-COLOR: #fff;
+	height: 600px;
+	color: #FFFFFF;
+	padding-left: 0px;
+	float: left;
+}
+
+.portalPage #mainBodyArea {
+	MARGIN: 0px 0px 0px 0px; BACKGROUND-COLOR: transparent
+}
+
+
+.portalPage #leftNavigationContainer FORM {
+	padding-left: 15px;
+	padding-bottom: 5px;
+	BORDER-BOTTOM: #999 1px solid;
+}
+
+#nav A:link {
+	PADDING-RIGHT: 1em; PADDING-LEFT: 1em; 
+	COLOR: grey; 
+	BACKGROUND-COLOR: #903;
+	TEXT-DECORATION: none
+}
+
+#nav A:link.current {
+	PADDING-RIGHT: 1em; PADDING-LEFT: 1em; 
+	COLOR: white; 
+	BACKGROUND-COLOR: #903;
+	TEXT-DECORATION: none
+}
+
+#nav A:hover {
+	COLOR: #ffffff; 
+	BACKGROUND-COLOR: #903
+}
+
+#nav UL {
+	PADDING-RIGHT: 0px; 
+	DISPLAY: block;
+	PADDING-LEFT: 0px;
+	LIST-STYLE-POSITION: outside; 
+	FONT-SIZE: x-small;
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px 0px 0px 10px;
+	PADDING-TOP: 0px; 
+	FONT-FAMILY: Verdana, sans-serif; 
+	LIST-STYLE-TYPE: none;
+	border-bottom: 1px solid;
+}
+
+#nav LI {
+	BORDER-RIGHT: #cecbc6 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #cecbc6 1px solid; 
+	DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FLOAT: left; PADDING-BOTTOM: 0px; 
+	MARGIN: 0px 5px; BORDER-LEFT: #cecbc6 1px solid; COLOR: #ffffff;
+	PADDING-TOP: 0px; POSITION: relative; TOP: -1.32em;
+}
+
+#nav LI.current {
+	BORDER-RIGHT: 2px solid #990000; PADDING-RIGHT: 5px; BORDER-TOP: 2px solid #990000; 
+	DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FLOAT: left; PADDING-BOTTOM: 0px; 
+	MARGIN: 0px 5px; BORDER-LEFT: 2px solid #990000;
+	PADDING-TOP: 0px; POSITION: relative; TOP: -1.32em; BACKGROUND-COLOR: white
+}
+
+A.ssmItems:link		{color:black;text-decoration:none;}
+A.ssmItems:hover	{color:black;text-decoration:none;}
+A.ssmItems:active	{color:black;text-decoration:none;}
+A.ssmItems:visited	{color:black;text-decoration:none;}
+
+A.normal:link		{color:blue;text-decoration:none;}
+A.normal:hover		{color:blue;text-decoration:none;}
+A.normal:active		{color:blue;text-decoration:none;}
+A.normal:visited	{color:red;text-decoration:none;}
+
+
+
+#popitmenu{
+position: absolute;
+background-color: white;
+border:1px solid black;
+font: normal 12px Verdana;
+line-height: 18px;
+z-index: 100;
+visibility: hidden;
+}
+
+#popitmenu a{
+text-decoration: none;
+padding-left: 2px;
+color: black;
+display: block;
+}
+
+#popitmenu a:hover{ /*hover background color*/
+#background-color: #CCFF9D;
+background-color: #903;
+}
+
+.scrollable {
+	height:100%;
+	width:100%;
+	overflow:auto;
+}
+
+
+/*---------------------Styles for new menu system--------------------------*/
+	/* 
+	General styles for this example page */
+	html{
+		height:100%;
+	}
+	/*body{
+		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+		font-size:0.8em;
+		margin:0px;
+		padding:0px;
+		text-align:center;
+		background-color:#E2EBED;
+		height:100%;
+	}*/
+	
+	p{
+		margin-top:5px;
+		margin-bottom:10px;
+	}
+	
+	#mainContainer{
+		width:760px;
+		margin:0 auto;
+		text-align:left;
+		background-color: #FFF;
+		padding-left:16px;
+		padding-right:16px;
+		padding-bottom:20px;	
+	}
+	
+	#dhtmlgoodies_menu img{
+		border:0px;
+	}
+
+	/* End general styles for this example page */
+	/* General configuration CSS */
+	
+	#dhtmlgoodies_menu ul li ul{
+		display:none;	/* Needed to display ok in Opera */
+		
+	}
+		
+	#dhtmlgoodies_menu{
+		/*visibility:hidden;	*/
+	}
+	#dhtmlgoodies_menu ul{
+		margin:0px;	/* No indent */
+		padding:0px;	/* No indent */
+		border:0px;
+	}
+	#dhtmlgoodies_menu li{
+		list-style-type:none;	/* No bullets */
+	}	
+	#dhtmlgoodies_menu a{
+
+		margin:0px;
+		padding:0px;
+	}
+	/* End general configuration CSS */
+	
+	
+	/* Cosmetic */
+	
+	/***********************************************************************
+		CSS - MENU BLOCKS
+	 	General rules for all menu blocks (group of sub items) 
+	***********************************************************************/
+	#dhtmlgoodies_menu ul{
+		border:0px solid #000;
+		background-color:#ffffff;
+		padding:0px;
+		LINE-HEIGHT: 17px;		 
+	}
+		
+	#dhtmlgoodies_menu ul.menuBlock1{	/* Menu bar - main menu items */
+		border:0px;
+		padding:1px;
+		border:1px solid #903;
+		background-color:#903;
+		overflow:visible;
+	}
+	#dhtmlgoodies_menu ul.menuBlock2{	/* Menu bar - main menu items */
+		border:0px;
+		padding:1px;
+		border:1px solid #555;
+	}
+	
+	/***********************************************************************
+		CSS - MENU ITEMS
+	 	Here, you could assign rules to the menu items at different depths.
+	***********************************************************************/
+	/* General rules for all menu items */
+	#dhtmlgoodies_menu a{
+		color: #000000;
+		text-decoration:none;
+		padding-left:2px;
+		padding-right:2px;
+	
+	}
+	
+	/*
+	Main menu items 
+	*/
+	
+	#dhtmlgoodies_menu .currentDepth1{
+		padding-left:5px;
+		padding-right:5px;
+		border:1px none #E2EBED;
+		border-left: 1px solid #000000;
+	}
+	#dhtmlgoodies_menu .currentDepth1over{
+		padding-left:5px;
+		padding-right:5px;
+		background-color:#317082;
+		border:1px none #000;
+		border-left: 1px solid #000000;	
+		
+	}
+	#dhtmlgoodies_menu .currentDepth1 a{
+		font-weight:normal;
+	}
+	#dhtmlgoodies_menu .currentDepth1over a{	/* Text rules */
+		color:#c0c0c0;
+		font-weight:normal;
+	}
+	
+	/* Sub menu depth 1 */
+	#dhtmlgoodies_menu .currentDepth2{
+		padding-right:2px;
+		border:1px solid #FFF;
+	}
+	#dhtmlgoodies_menu .currentDepth2over{
+		padding-right:2px;
+		background-color:#E2EBED;
+		border:1px solid #000;
+	}	
+	#dhtmlgoodies_menu .currentDepth2over a{	/* Text rules */
+		color:#000;
+	}	
+	/* Sub menu depth 2 */
+	#dhtmlgoodies_menu .currentDepth3{
+		padding-right:2px;
+		border:1px solid #FFF;
+	}
+	#dhtmlgoodies_menu .currentDepth3over{
+		padding-right:2px;
+		background-color:#EDE3EB;
+		border:1px solid #000;
+	}
+	/* Sub menu depth 3 */
+	#dhtmlgoodies_menu .currentDepth4{
+		padding-right:2px;
+		border:1px solid #FFF;
+	}
+	#dhtmlgoodies_menu .currentDepth4over{
+		padding-right:2px;
+		background-color:#EBEDE3;
+		border:1px solid #000;
+	}	
+	
+	
+	
+/*---------------------End Styles for new menu system--------------------------*/	
+	
+

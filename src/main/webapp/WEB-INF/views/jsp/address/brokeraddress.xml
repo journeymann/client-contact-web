@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER,ROLE_ADMIN" match="any"/>
+    
+    <input name="id" />
+    <input name="broker" />
+
+    <decision-state id="createOrEdit">
+        <if test="id == ''" then="createAddress" else="editAddress" />
+    </decision-state>
+    
+    <action-state id="createAddress">
+        <evaluate expression="policyDao.findNewBrokerAddress(broker.brokerid)" result="flowScope.address" />
+        <transition to="addressBrokerForm" />
+    </action-state>
+
+    <action-state id="editAddress">
+        <evaluate expression="broker.findBrokerAddressById(id)" result="flowScope.address" />
+        <set name="flowScope.address.clientid" value="broker.brokerid" />
+        <transition to="addressBrokerForm" />
+    </action-state>
+            
+    <view-state id="addressBrokerForm" model="address" view="/address/broker_form">
+        <transition on="save" to="saveAddress" />
+        <transition on="cancel" to="cancelAddress" bind="false" />
+    </view-state>
+    
+    <end-state id="saveAddress">
+        <output name="address" value="address"/>
+    </end-state>
+
+    <end-state id="cancelAddress" />
+    
+</flow>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER,ROLE_ADMIN" match="any"/>
+    
+    <input name="id" />
+    
+    <decision-state id="createOrEdit">
+        <if test="id == null" then="create" else="edit" />
+    </decision-state>
+
+    <action-state id="create">
+        <evaluate expression="fieldBean" result="flowScope.field" />
+        <transition to="fieldForm" />
+    </action-state>
+
+    <action-state id="edit">
+        <evaluate expression="policyDao.findFieldById(id)" result="flowScope.field" />
+        <evaluate expression="policyDao.findFields()" result="flowScope.fields" />
+        <transition to="fieldForm" />
+    </action-state>
+    
+    <view-state id="fieldForm" model="field" view="/misc/form">
+        
+        <transition on="cancel" to="cancel" bind="false">
+            <evaluate expression="policyDao.findFields()" result="flowScope.fields" />
+        </transition>
+        
+    </view-state>
+
+    <end-state id="fieldConfirmed" />
+
+    <end-state id="cancel" />
+    
+</flow>

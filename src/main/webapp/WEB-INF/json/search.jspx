@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="application/json"
+	import="com.hlpp.clientcontact.web.json.SearchDelegate"
+    %>
+
+<%
+String term = request.getParameter("name_startsWith"); 
+
+System.out.println("**************** "+term);
+
+if(term != null)
+{
+	String val = new SearchDelegate().lookupCases(term);	
+	out.println(val);	 
+	out.flush();
+	
+	System.out.println("flush complete! "+ val);	
+}
+
+System.out.println("page load complete! ");
+%>
+<p>
+
+Search Results!
+</p>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <secured attributes="ROLE_USER,ROLE_ADMIN" match="any"/>
+    
+    <input name="id" />
+    
+    <decision-state id="createOrEdit">
+        <if test="id == null" then="create" else="edit" />
+    </decision-state>
+
+    <action-state id="create">
+        <evaluate expression="dealerBean" result="flowScope.dealer" />
+        <transition to="dealerForm" />
+    </action-state>
+
+    <action-state id="edit">
+        <evaluate expression="policyDao.findBrokerDealerById(id)" result="flowScope.dealer" />
+        <transition to="dealerForm" />
+    </action-state>
+    
+    <view-state id="dealerForm" model="dealer" view="/dealer/form">
+        <transition on="addAddress" to="dealeraddress" bind="false">
+            <set name="flashScope.addressId" value="''" />
+        </transition>
+        <transition on="editAddress" to="dealeraddress">
+            <set name="flashScope.addressId" value="requestParameters.addressId" />
+        </transition>
+        <transition on="deleteAddress" to="dealerForm">
+            <evaluate expression="policyDao.deleteDealerAddress(id, requestParameters.addressId)" result="flowScope.dealer" />
+        </transition>
+        
+        <transition on="save" to="dealerForm">
+            <evaluate expression="policyDao.save(dealer)" result="flowScope.dealer" />
+            
+            <set name="flowScope.id" value="dealer.brokerDealerid" />
+            
+            <set name="flashScope.statusMessageKey" value="'broker.dealer.form.msg.success'" />
+            
+            <render fragments="content" />
+        </transition>
+        <transition on="cancel" to="cancel" bind="false">
+            <evaluate expression="policyDao.findBrokerDealers()" result="flowScope.dealers" />
+        </transition>
+    </view-state>
+
+    <subflow-state id="dealeraddress" subflow="dealeraddress"> 
+        <input name="id" value="addressId"/>
+        <input name="dealer" value="dealer"/>
+        
+        <output name="address" />
+        
+        <transition on="saveAddress" to="dealerForm">
+            <evaluate expression="policyDao.saveDealerAddress(id, address)" result="flowScope.dealer" />
+            <set name="flashScope.statusMessageKey" value="'address.form.msg.success'" />
+        </transition>
+        <transition on="cancelAddress" to="dealerForm">
+        	<evaluate expression="policyDao.findBrokerDealerById(dealer.brokerDealerid)" result="flowScope.dealer" />
+        </transition>                        
+    </subflow-state>
+    
+    <end-state id="dealerConfirmed" />
+
+    <end-state id="cancel" view="externalRedirect:contextRelative:/type/broker_dealer.html"/>
+    
+</flow>

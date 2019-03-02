@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <!-- Default Main Template -->
+    <definition name=".mainTemplate" template="/WEB-INF/tiles/main.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/tiles/blank.jsp"/>
+    </definition>
+
+    <definition name=".emptyTemplate" template="/WEB-INF/tiles/empty.jsp">
+        <put-attribute name="content" value="/WEB-INF/tiles/blank.jsp"/>
+    </definition>
+
+    <definition name=".typeTemplate" template="/WEB-INF/tiles/type.jsp">
+        <put-attribute name="content" value="/WEB-INF/tiles/blank.jsp"/>
+    </definition>
+
+    <definition name=".rdrTemplate" template="/WEB-INF/tiles/rdr.jsp">
+        <put-attribute name="content" value="/WEB-INF/tiles/blank.jsp"/>
+    </definition>
+
+    <definition name=".miscTemplate" template="/WEB-INF/tiles/misc.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/tiles/menu.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/tiles/blank.jsp"/>
+    </definition>
+
+    <definition name=".logoutTemplate" template="/WEB-INF/tiles/main_no_timeout.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/tiles/blank.jsp"/>
+    </definition>
+
+
+    <definition name="type/redirect" extends=".rdrTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/redirect.jsp"/>
+    </definition>
+
+    <definition name="policy/detail" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/policy/detail.jsp"/>
+    </definition>
+
+    <definition name="denied" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/tools/denied.jsp"/>
+    </definition>
+
+    <definition name="type/contacts" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/contacts.jsp"/>
+    </definition>
+
+    <definition name="type/policy" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/policy.jsp"/>
+    </definition>
+
+    <definition name="policy/delete" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/policy.jsp"/>
+    </definition>
+
+    <definition name="type/broker_company" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/broker_company.jsp"/>
+    </definition>
+
+    <definition name="broker/delete" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/broker_company.jsp"/>
+    </definition>
+
+    <definition name="type/broker_dealer" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/broker_dealer.jsp"/>
+    </definition>
+
+    <definition name="dealer/delete" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/broker_dealer.jsp"/>
+    </definition>
+
+    <definition name="type/query" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/query.jsp"/>
+    </definition>
+
+    <definition name="type/query_person" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/query_person.jsp"/>
+    </definition>
+
+    <definition name="type/compliance" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/compliance.jsp"/>
+    </definition>
+
+    <definition name="compliance/delete" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/compliance.jsp"/>
+    </definition>
+
+    <!--
+    <definition name="json/query" extends=".emptyTemplate">
+	        <put-attribute name="content" value="/WEB-INF/jsp/jsonView.jsp" />
+	</definition>
+    -->
+    <definition name="policy/desc" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/desc.jsp"/>
+    </definition>
+
+    <definition name="compliance/desc" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/desc.jsp"/>
+    </definition>
+
+    <definition name="policy/desc_all" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/desc_all.jsp"/>
+    </definition>
+
+    <definition name="misc/desc" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/desc.jsp"/>
+    </definition>
+
+    <definition name="misc/desc_all" extends=".typeTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/desc_all.jsp"/>
+    </definition>
+
+    <definition name="misc/report" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/report.jsp"/>
+    </definition>
+
+    <definition name="misc/report_person" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/report.jsp"/>
+    </definition>
+
+    <definition name="type/contacts_select" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/contacts_select.jsp"/>
+    </definition>
+
+    <definition name="policy/view_contact" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/view_contact.jsp"/>
+    </definition>
+    <definition name="compliance/view_contact" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/view_contact.jsp"/>
+    </definition>
+
+    <definition name="broker/view_contact" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/view_contact.jsp"/>
+    </definition>
+    <definition name="dealer/view_contact" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/view_contact.jsp"/>
+    </definition>
+    <definition name="type/view_contact" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/view_contact.jsp"/>
+    </definition>
+
+    <definition name="type/maintenance" extends=".mainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/type/maintenance.jsp"/>
+    </definition>
+
+    <definition name="type/edit_table" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/table_form.jsp"/>
+    </definition>
+
+    <definition name="timedoutRedirect" extends=".emptyTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/timedoutRedirect.jsp"/>
+    </definition>
+
+    <definition name="timedout" extends=".logoutTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/jsp/misc/timedout.jsp"/>
+    </definition>
+
+</tiles-definitions>

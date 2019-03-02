@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                                 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
+
+    <persistence-unit name="simple-jpa" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <class>com.hlpp.clientcontact.domain.Person</class>
+        <class>com.hlpp.clientcontact.domain.Address</class>
+        <class>com.hlpp.clientcontact.domain.Field</class>
+        <class>com.hlpp.clientcontact.domain.BrokerAddress</class>
+        <class>com.hlpp.clientcontact.domain.BrokerDealerAddress</class>
+	<class>com.hlpp.clientcontact.domain.Authority</class>
+        <class>com.hlpp.clientcontact.domain.User</class>
+        <class>com.hlpp.clientcontact.domain.Policy</class>
+        <class>com.hlpp.clientcontact.domain.Broker</class>
+        <class>com.hlpp.clientcontact.domain.BrokerDealer</class>
+        <class>com.hlpp.clientcontact.domain.ContactCase</class>
+        <class>com.hlpp.clientcontact.domain.ContactType</class>
+        <class>com.hlpp.clientcontact.domain.Filter</class>
+        <class>com.hlpp.clientcontact.domain.SubFilter</class>
+        <class>com.hlpp.clientcontact.domain.Attribute</class>
+        <class>com.hlpp.clientcontact.domain.Display</class>
+        <class>com.hlpp.clientcontact.domain.CFilter</class>
+        <class>com.hlpp.clientcontact.domain.State</class>
+        <class>com.hlpp.clientcontact.domain.PolicyDataOutput</class>
+        <class>com.hlpp.clientcontact.domain.maintenance.AbstractMaintenance</class>
+        <class>com.hlpp.clientcontact.domain.maintenance.ClientGroup</class>
+        <class>com.hlpp.clientcontact.domain.maintenance.CaseManager</class>
+        <class>com.hlpp.clientcontact.domain.maintenance.Team</class>
+        <class>com.hlpp.clientcontact.domain.maintenance.Series</class>
+        <class>com.hlpp.clientcontact.domain.maintenance.Country</class>
+        <class>com.hlpp.clientcontact.domain.maintenance.Library</class>
+                
+        <exclude-unlisted-classes/>
+        
+        <!-- commented out so that hibernate will work in Tomcat 
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+ 	    <property name="hibernate.transaction.manager_lookup_class" 
+ 	    		value="org.hibernate.transaction.WeblogicTransactionManagerLookup"/>            
+        </properties>
+        -->
+        
+    </persistence-unit>
+
+</persistence>
+
+
